@@ -15,7 +15,7 @@ describe("TaskList", function() {
     expect(tasklist.title).toEqual("Tasklist");
   });
 
-  it("should be able to remove"), function(){
+  it("should be able to remove", function(){
     var task = new Task("cooltask");
     tasklist.add(task);
     expect(tasklist.count()).toEqual(1);
