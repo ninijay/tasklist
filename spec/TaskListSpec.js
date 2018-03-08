@@ -6,8 +6,8 @@ describe("TaskList", function() {
   });
 
   it("should have tasks", function() {
-    tasklist.add(new Task('name1'));
-    tasklist.add(new Task('name2'));
+    tasklist.add(new Task("name1"));
+    tasklist.add(new Task("name2"));
     expect(tasklist.count()).toEqual(2);
   });
 
