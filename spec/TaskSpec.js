@@ -1,20 +1,26 @@
-/*describe("Player", function() {
-  var player;
-  var song;
+describe("Task", function() {
+  var task;
+  var name="task1";
 
   beforeEach(function() {
-    player = new Player();
-    song = new Song();
+    task = new Task(name);
   });
 
-  it("should be able to play a Song", function() {
-    player.play(song);
-    expect(player.currentlyPlayingSong).toEqual(song);
-
-    //demonstrates use of custom matcher
-    expect(player).toBePlaying(song);
+  it("should have title", function() {
+    expect(task.title).toEqual(name);
   });
 
+  it("should be not done", function(){
+    expect(task.done).toEqual(false);
+  });
+
+  it("should be able to be done", function(){
+    task.setDone();
+    expect(task.done).toEqual(true);
+  });
+});
+
+/*
   describe("when song has been paused", function() {
     beforeEach(function() {
       player.play(song);
