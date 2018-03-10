@@ -2,11 +2,11 @@ function TaskList(title){
     this.title = title;
     var tasks = [];
     
-    function add(task) {
+    this.add = function(task) {
     	tasks.push(task);
     }
     
-    function remove(taksTitle) {
+    this.remove = function(taksTitle) {
     	for(var i = 0; i < tasks.length; i++) {
     		if(tasks[i].title == taskTitle) {
     			tasks.splice(i, 1);
@@ -15,7 +15,7 @@ function TaskList(title){
     	}
     }
     
-    function count() {
+    this.count = function() {
     	return tasks.length;
     }
     
