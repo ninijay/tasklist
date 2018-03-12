@@ -6,9 +6,9 @@ function TaskList(title){
     	tasks.push(task);
     }
     
-    this.remove = function(taksTitle) {
+    this.remove = function(taks) {
     	for(var i = 0; i < tasks.length; i++) {
-    		if(tasks[i].title == taskTitle) {
+    		if(tasks[i] === task) {
     			tasks.splice(i, 1);
     			break;
     		}
