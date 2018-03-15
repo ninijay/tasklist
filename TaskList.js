@@ -1,24 +1,22 @@
 function TaskList(title){
     this.title = title;
-    var tasks = [];
-    
-    this.add = function(task) {
-    	tasks.push(task);
+    this.tasks = [];
+}
+
+TaskList.prototype.add = function(task) {
+    this.tasks.push(task);
+}
+
+TaskList.prototype.remove = function(task) {
+    for(var i = 0; i < this.tasks.length; i++) {
+        if(this.tasks[i] === task) {
+            this.tasks.splice(i, 1);
+            break;
+        }
     }
-    
-    this.remove = function(taks) {
-    	for(var i = 0; i < tasks.length; i++) {
-    		if(tasks[i] === task) {
-    			tasks.splice(i, 1);
-    			break;
-    		}
-    	}
-    }
-    
-    this.count = function() {
-    	return tasks.length;
-    }
-    
-    
+}
+
+TaskList.prototype.count = function() {
+    return this.tasks.length;
 }
 

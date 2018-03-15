@@ -16,10 +16,10 @@ describe("TaskList", function() {
   });
 
   it("should be able to remove", function(){
-    var task = new Task("cooltask");
-    tasklist.add(task);
+    var taskOne = new Task("cooltask");
+    tasklist.add(taskOne);
     expect(tasklist.count()).toEqual(1);
-    tasklist.remove(task);
+    tasklist.remove(taskOne);
     expect(tasklist.count()).toEqual(0);
   });
 });
