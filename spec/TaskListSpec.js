@@ -22,4 +22,12 @@ describe("TaskList", function() {
     tasklist.remove(taskOne);
     expect(tasklist.count()).toEqual(0);
   });
+
+  it("should be able to find by id", function(){
+    var taskwithID = new Task("Test", 0);
+    tasklist.add(taskwithID);
+    var test = tasklist.getById(0); 
+    console.log(test);
+    expect(test.title).toEqual("Test");
+  })
 });

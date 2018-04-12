@@ -4,6 +4,7 @@ $(document).ready(function(){
     window.tlist = new TaskList("1337 H@xxor Tasks");
 
     $("#title").text(window.tlist.title);
+    
     function addTaskToGui(task, id)
     {
        $("#list ul").append('<li id="task-'+id+'">'+task.title+'</li>');
@@ -19,9 +20,9 @@ $(document).ready(function(){
     {
         var id=e.target.id;
         var search = id.replace("task-", "");
-        console.log(search);
+        
         window.tlist.getById(search).setDone();
-        console.log(window.tlist.tasks);
+        console.log(tlist.tasks);
         completeTask(id);
     });
 

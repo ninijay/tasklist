@@ -23,6 +23,8 @@ TaskList.prototype.getById = function(id) {
             break;
         }
     }
+
+    return new Task("No Task found", -1);
 }
 
 TaskList.prototype.count = function() {
