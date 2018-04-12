@@ -1,7 +1,11 @@
 $(document).ready(function(){
     
+    window.taskid=0;
+
     function addTaskToGui(task, id)
     {
+        console.log(id);
+        console.log($("#list ul #tasks"));
         $("#list ul #tasks").append('<li id="task-'+id+'">'+task.title+'</li>');
     };
 
@@ -16,10 +20,14 @@ $(document).ready(function(){
         completeTask(e.target.id);
     });
 
-    $("#addTaskForm")
-
-    var text = $('#DynamicValueAssignedHere').find('input[name="FirstName"]').val();
-
+    $('#addTaskForm').submit(function(e)
+    {
+        e.preventDefault();
+        var tit = $('#addTaskForm').find('input[name="title"]').val();
+        var task = new Task(tit);
+        addTaskToGui(task, window.taskid);
+        window.taskid += 1;
+    });
 });
    
    
