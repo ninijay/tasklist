@@ -6,8 +6,8 @@ describe("TaskList", function() {
   });
 
   it("should have tasks", function() {
-    tasklist.add(new Task("name1"));
-    tasklist.add(new Task("name2"));
+    tasklist.add(new Task("name1", 0));
+    tasklist.add(new Task("name2", 1));
     expect(tasklist.count()).toEqual(2);
   });
 
@@ -16,7 +16,7 @@ describe("TaskList", function() {
   });
 
   it("should be able to remove", function(){
-    var taskOne = new Task("cooltask");
+    var taskOne = new Task("cooltask", 3);
     tasklist.add(taskOne);
     expect(tasklist.count()).toEqual(1);
     tasklist.remove(taskOne);

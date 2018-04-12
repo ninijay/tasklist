@@ -1,6 +1,7 @@
-function Task(title) {
+function Task(title, id) {
     this.title = title;
     this.done = false;
+    this.id;
 }
 
 Task.prototype.setDone = function(){

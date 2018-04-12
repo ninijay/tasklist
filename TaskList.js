@@ -16,6 +16,15 @@ TaskList.prototype.remove = function(task) {
     }
 }
 
+TaskList.prototype.getById = function(id) {
+    for(var i = 0; i < this.tasks.length; i++) {
+        if(this.tasks[i].id == id) {
+            return this.tasks[i];
+            break;
+        }
+    }
+}
+
 TaskList.prototype.count = function() {
     return this.tasks.length;
 }
