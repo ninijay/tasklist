@@ -1,7 +1,7 @@
 #list ul #tasks{
-    color: white;
+    background-color: red; 
 }
 
 #list ul #tasks.completed{
-    color: lightgreen;
+    background-color: lightgreen;
 }
