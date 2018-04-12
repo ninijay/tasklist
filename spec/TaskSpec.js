@@ -1,9 +1,10 @@
 describe("Task", function() {
   var task;
   var name="task1";
+  var id=0;
 
   beforeEach(function() {
-    task = new Task(name);
+    task = new Task(name, id);
   });
 
   it("should have title", function() {
