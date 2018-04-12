@@ -6,7 +6,7 @@ $(document).ready(function(){
     {
         console.log(id);
         console.log($("#list ul #tasks"));
-        $("#list ul #tasks").append('<li id="task-'+id+'">'+task.title+'</li>');
+        $("#list ul").append('<li id="task-'+id+'">'+task.title+'</li>');
     };
 
     function completeTask(id)
