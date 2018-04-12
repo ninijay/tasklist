@@ -6,36 +6,22 @@ describe('tasklist homepage', function() {
 	it('should have a title with the text "Titel"', function() {
 		element(by.css('#title')).getText().then(function(text) {
 			browser.pause();
-			expect(text).toEqual('Titel');
+			expect(text).toEqual('1337 H@xxor Tasks');
 		});
 	});
 
-	describe('todo list', function() {
+	describe('tasks list', function() {
 		var todoList;
-
-		beforeEach(function() {
-			browser.get('http://www.angularjs.org');
-
-			todoList = element.all(by.repeater('todo in todoList.todos'));
+		var object_patern = require('./object_patern.js');
+		
+		it('should add a task', function() {
+			var input = 'Test';
+			object_patern.addTask(input);
+			todoList = element.all(by.css('#tasks'));
+			todoList.get(0).getText().then(function(text){
+				expect(text).toEqual(input);
+			});
 		});
-
-		xit('should list todos',
-				function() {
-					expect(todoList.count()).toEqual(2);
-					expect(todoList.get(1).getText()).toEqual(
-							'build an AngularJS app');
-				});
-
-		xit('should add a todo', function() {
-			var addTodo = element(by.model('todoList.todoText'));
-			var addButton = element(by.css('[value="add"]'));
-
-			addTodo.sendKeys('write a protractor test');
-			addButton.click();
-
-			expect(todoList.count()).toEqual(3);
-			expect(todoList.get(2).getText())
-					.toEqual('write a protractor test');
-		});
+		
 	});
 });
