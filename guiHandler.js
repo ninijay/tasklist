@@ -2,18 +2,24 @@ $(document).ready(function(){
     
     window.taskid=0;
     window.tlist = new TaskList("1337 H@xxor Tasks");
+    window.openTask ="<i class=\"fa fa-clone\"></i>"// "<i class=\"fas fa-thumbtack\"></i>";
 
     $("#title").text(window.tlist.title);
     
     function addTaskToGui(task, id)
     {
-       $("#list ul").append('<li id="task-'+id+'">'+task.title+'</li>');
+        console.log(window.openTask);
+       $("#list ul").append('<li id="task-'+id+'">'+window.openTask+' '+task.title+'</li>');
     };
 
     function completeTask(id)
     {
         var search = "#"+id;
         $(search).addClass("completed");
+        var text = $(search).text();
+        text = text.replace(window.openTask, "");
+        text = "<i class=\"fa fa-check\"></i> " + text;
+        $(search).html(text);
     }
 
     $('#list ul').on("click", "li", function(e) 
@@ -22,7 +28,6 @@ $(document).ready(function(){
         var search = id.replace("task-", "");
         
         window.tlist.getById(search).setDone();
-        console.log(tlist.tasks);
         completeTask(id);
     });
 
@@ -37,5 +42,5 @@ $(document).ready(function(){
     });
 });
    
-   
+
 
