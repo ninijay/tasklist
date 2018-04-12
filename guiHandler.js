@@ -33,6 +33,7 @@ $(document).ready(function(){
         $(search).addClass("completed");
         search = search+" .checkit";
         $(search).html("<i class=\"fa fa-check\"></i>");
+        
     }
 
     $('#list ul').on("click", ".checkit", function(e) 
