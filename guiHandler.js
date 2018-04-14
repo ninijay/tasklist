@@ -9,7 +9,7 @@ $(document).ready(function(){
     function addTaskToGui(task, id)
     {
         console.log(window.openTask);
-       $("#list ul").append('<li id="task-'+id+'"><span class="checkit">'+window.openTask+'</span> <span contenteditable="true" class="tsk-tit">'+task.title+'</span></li>');
+       $("#list ul").append('<li type="1" value='+ id +' id="task-'+id+'"><span contenteditable="true" class="tsk-tit">'+task.title+'</span> <span class="checkit">'+window.openTask+'</span></li>');
     };
 
 
@@ -49,9 +49,10 @@ $(document).ready(function(){
     {
         e.preventDefault();
         var tit = $('#addTaskForm').find('input[name="title"]').val();
-        var task = new Task(tit, window.taskid);
+        var taskId = (window.taskid + 1);
+        var task = new Task(tit, taskId);
         window.tlist.add(task);
-        addTaskToGui(task, window.taskid);
+        addTaskToGui(task, taskId);
         window.taskid += 1;
     });
 });
