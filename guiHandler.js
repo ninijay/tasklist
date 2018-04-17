@@ -40,13 +40,17 @@ $(document).ready(function(){
         $(search).html("<i class=\"fa fa-check\"></i>");
     }
 
-    $('#list ul').on("click", ".checkit", function(e) 
+    $('#list ul').on("click", "li", function(e) 
     {
         
         var id=$(e.target).parent().parent().parent().attr("id");
-        var search = id.replace("task-", "");
-        window.tlist.getById(search).setDone();
-        completeTask(id);
+        if(id.startsWith("task-"))
+        {
+            var search = id.replace("task-", "");
+            window.tlist.getById(search).setDone();
+            completeTask(id);
+        }
+        
     });
 
     $('#list ul').children(".tsk-tit").off();
