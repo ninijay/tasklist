@@ -1,7 +1,18 @@
-#list ul #tasks{
-    background-color: red; 
+li {
+    list-style: none;
 }
 
-#list ul #tasks.completed{
-    background-color: lightgreen;
+.checkit{
+    font-size: 20px;
+    padding: 10px;
 }
+
+.container{
+    margin-top: 20px;
+}
+body{
+    background-image: url(../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

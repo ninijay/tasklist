@@ -2,16 +2,20 @@ $(document).ready(function(){
     
     window.taskid=0;
     window.tlist = new TaskList("1337 H@xxor Tasks");
-    window.openTask ="<i class=\"fa fa-clone\"></i>"// "<i class=\"fas fa-thumbtack\"></i>";
+    window.openTask ="<i class=\"fa fa-clone\"></i> "// "<i class=\"fas fa-thumbtack\"></i>";
 
     $("#title").text(window.tlist.title);
     
     function addTaskToGui(task, id)
     {
         console.log(window.openTask);
-       $("#list ul").append('<li id="task-'+id+'"><span class="checkit">'+window.openTask+'</span> <span contenteditable="true" class="tsk-tit">'+task.title+'</span></li>');
+        var li = $("#list ul").append(
+            $('<li>').attr('id', 'task-'+id).append(
+                $("<span>").addClass("checkit").html(window.openTask))
+            .append(
+                $("<span>").attr("contenteditable", "true").addClass("tsk-tit").text(task.title)
+            ).addClass("alert").addClass("alert-danger"));
     };
-
 
     function editTask(id, text)
     {
@@ -30,20 +34,22 @@ $(document).ready(function(){
     function completeTask(id)
     {
         var search = "#"+id;
-        $(search).addClass("completed");
+        $(search).removeClass("alert-danger");
+        $(search).addClass("alert-success");
         search = search+" .checkit";
         $(search).html("<i class=\"fa fa-check\"></i>");
-        
     }
 
     $('#list ul').on("click", ".checkit", function(e) 
     {
-        var id=$(e.target).parent().parent();
-        id = id.attr("id");
+        
+        var id=$(e.target).parent().parent().parent().attr("id");
         var search = id.replace("task-", "");
         window.tlist.getById(search).setDone();
         completeTask(id);
     });
+
+    $('#list ul').children(".tsk-tit").off();
 
     $('#addTaskForm form').submit(function(e)
     {

@@ -1,27 +1,79 @@
 <!DOCTYPE html>
-<html>
-    <header>
-        <script src="./jquery-3.3.1.min.js"></script>
-        <script src="./Task.js"></script>
-        <script src="./TaskList.js"></script>
-        <script src="./guiHandler.js"></script>
+<html lang="en">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    </header>
-    <body>
-        <div id="addTaskForm">
-            <form action="" method="">
-                <input type="text" name="title" placeholder="Tasktitle" id="taskinput"/>
-                <input type="submit" value="Add Task" id="addTrigger"/>
-            </form>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+        crossorigin="anonymous"></script>
+    <script src="./jquery-3.3.1.min.js"></script>
+    <script src="./Task.js"></script>
+    <script src="./TaskList.js"></script>
+    <script src="./guiHandler.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/tasklistitem.css">
+    <title>Tasklist</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Tasklist</h1>
+            <p>super amazing Tasklist for 1337 h@xxr</p>
         </div>
-        <h1 id="title">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <div id="addTaskForm">
+                    <form action="" method="">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="title" placeholder="Tasktitle" id="taskinput" />
 
-        </h1>
-        <div id="list">
-            <ul id="tasks">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Add Task" id="addTrigger" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 id="title">
 
-            </ul>
+                        </h1>
+                    </div>
+                    <div class="card-body">
+                        <div id="list">
+                            <ul id="tasks" class="list-unstyled">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header">
+                        About us
+                    </div>
+                    <div class="card-body">
+                        Buy our merch
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
