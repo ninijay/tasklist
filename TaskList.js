@@ -1,10 +1,12 @@
 function TaskList(title){
+    this.id = null;
     this.title = title;
     this.tasks = [];
 }
 
 TaskList.prototype.add = function(task) {
     this.tasks.push(task);
+    return this.getById(task.id);
 }
 
 TaskList.prototype.remove = function(task) {
@@ -39,3 +41,21 @@ TaskList.prototype.render = function() {
 
     return $tasks;
 }
+
+TaskList.prototype.toJSON = function () {
+    return JSON.stringify(this);
+};
+
+TaskList.prototype.load = function (id, callback) {
+    var taskList = new TaskList();
+    $.getJSON('http://zhaw.herokuapp.com/task_lists/' + id, function (data) {
+        taskList.id = data.id;
+        $.each(data.tasks, function (index, task) {
+            var t = taskList.add(task.title);
+            t.done = task.done;
+        });
+        taskList.title = data.title;
+        callback(taskList);
+    });
+}
+

@@ -1,10 +1,21 @@
 $(document).ready(function(){
     
     window.taskid=0;
-    window.tlist = new TaskList("1337 H@xxor Tasks");
-    window.tlist.add(new Task("Twst", 2));
-    $('#list ul').append(tlist.render());
-    $("#title").text(window.tlist.title);
+    window.tlist = new TaskList("");
+    window.tlist.load("demo", function(lst){
+        window.tlist.title = lst.title;
+        lst.tasks.forEach(task => {
+            console.log(task);
+            window.tlist.add(new Task(task, window.taskid))
+            if(task.done == true)
+            {
+                window.tlist.getById(window.taskid).setDone();
+            }        
+            window.taskid += 1;
+        });
+        $('#list ul').append(tlist.render());
+        $("#title").text(window.tlist.title);
+    });
     
     function editTask(id, text)
     {
@@ -46,7 +57,7 @@ $(document).ready(function(){
             $search.addClass("alert-danger");
             $search.removeClass("alert-success");
             search = search+" .checkit";
-            $(search).html(window.openTask);   
+            $(search).html("<i class=\"fa fa-clone\"></i>");   
         }
 
 

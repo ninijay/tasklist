@@ -41,6 +41,6 @@ Task.prototype.render = function () {
     }).append([$done, $title]);
     
     $markup.addClass((this.done) ? "alert-success" : "alert-danger");
-    $markup.data("checked");
+    $markup.data("checked", this.done);
     return $markup;
 }
