@@ -19,4 +19,10 @@ describe("Task", function() {
     task.setDone();
     expect(task.done).toEqual(true);
   });
+
+  it("should render an li", function()
+  {
+    var $dom = $(task.render());
+    console.log($dom);
+  });
 });

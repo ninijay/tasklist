@@ -31,3 +31,11 @@ TaskList.prototype.count = function() {
     return this.tasks.length;
 }
 
+TaskList.prototype.render = function() {
+    var $tasks = [];
+    $.each(this.tasks, function(index, task) {
+        $tasks.push(task.render());
+    });
+
+    return $tasks;
+}
