@@ -48,7 +48,7 @@ TaskList.prototype.toJSON = function () {
 
 TaskList.prototype.load = function (id, callback) {
     var taskList = new TaskList();
-    $.getJSON('http://zhaw.herokuapp.com/task_lists/' + id, function (data) {
+    $.getJSON('https://cors-anywhere.herokuapp.com/http://zhaw.herokuapp.com/task_lists/' + id, function (data) {
         taskList.id = data.id;
         $.each(data.tasks, function (index, task) {
             var t = taskList.add(task.title);
