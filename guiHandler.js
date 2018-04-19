@@ -84,6 +84,7 @@ $(document).ready(function(){
         window.tlist.add(task);
         task.render().appendTo("#list ul");
         window.taskid += 1;
+        $('#addTaskForm').find('input[name="title"]').val("");
     });
 });
    
