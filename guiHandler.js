@@ -15,6 +15,8 @@ $(document).ready(function(){
             .append(
                 $("<span>").attr("contenteditable", "true").addClass("tsk-tit").text(task.title)
             ).addClass("alert").addClass("alert-danger"));
+
+            $("task-"+id).data("checked");
     };
 
     function editTask(id, text)
@@ -34,10 +36,29 @@ $(document).ready(function(){
     function completeTask(id)
     {
         var search = "#"+id;
-        $(search).removeClass("alert-danger");
-        $(search).addClass("alert-success");
-        search = search+" .checkit";
-        $(search).html("<i class=\"fa fa-check\"></i>");
+        var $search = $(search);
+        var check = "checked";
+        var isChecked = $search.data(check);
+
+        console.log(isChecked);
+        if(!isChecked)
+        {
+            $search.data(check, true);
+            $search.removeClass("alert-danger");
+            $search.addClass("alert-success");
+            search = search+" .checkit";
+            $(search).html("<i class=\"fa fa-check\"></i>");
+        }
+        else
+        {
+            $search.data(check, false);
+            $search.addClass("alert-danger");
+            $search.removeClass("alert-success");
+            search = search+" .checkit";
+            $(search).html(window.openTask);   
+        }
+
+
     }
 
     $('#list ul').on("click", "li", function(e) 
