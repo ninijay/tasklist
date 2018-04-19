@@ -2,7 +2,7 @@ $(document).ready(function(){
     
     window.taskid=0;
     window.tlist = new TaskList("");
-    window.tlist.load("demo", function(lst){
+    window.tlist.load("1524174301297574", function(lst){
         window.tlist.title = lst.title;
         lst.tasks.forEach(task => {
             console.log(task);
