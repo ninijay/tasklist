@@ -1,26 +1,26 @@
-function TaskList(title){
+function TaskList(title) {
     this.id = null;
     this.title = title;
     this.tasks = [];
 }
 
-TaskList.prototype.add = function(task) {
+TaskList.prototype.add = function (task) {
     this.tasks.push(task);
     return this.getById(task.id);
 }
 
-TaskList.prototype.remove = function(task) {
-    for(var i = 0; i < this.tasks.length; i++) {
-        if(this.tasks[i] === task) {
+TaskList.prototype.remove = function (task) {
+    for (var i = 0; i < this.tasks.length; i++) {
+        if (this.tasks[i] === task) {
             this.tasks.splice(i, 1);
             break;
         }
     }
 }
 
-TaskList.prototype.getById = function(id) {
-    for(var i = 0; i < this.tasks.length; i++) {
-        if(this.tasks[i].id == id) {
+TaskList.prototype.getById = function (id) {
+    for (var i = 0; i < this.tasks.length; i++) {
+        if (this.tasks[i].id == id) {
             return this.tasks[i];
             break;
         }
@@ -29,13 +29,13 @@ TaskList.prototype.getById = function(id) {
     return new Task("No Task found", -1);
 }
 
-TaskList.prototype.count = function() {
+TaskList.prototype.count = function () {
     return this.tasks.length;
 }
 
-TaskList.prototype.render = function() {
+TaskList.prototype.render = function () {
     var $tasks = [];
-    $.each(this.tasks, function(index, task) {
+    $.each(this.tasks, function (index, task) {
         $tasks.push(task.render());
     });
 
