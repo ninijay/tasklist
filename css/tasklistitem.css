@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 html * {
     font-family: Arial, Helvetica, sans-serif;
 }   
@@ -14,4 +15,23 @@ li {
 
 #list #tasks > li.completed{
     background-color: lightgreen;
+=======
+li {
+    list-style: none;
 }
+
+.checkit{
+    font-size: 20px;
+    padding: 10px;
+>>>>>>> e1e26b0a5c79674d11e58167001dd0732fe71a76
+}
+
+.container{
+    margin-top: 20px;
+}
+body{
+    background-image: url(../images/bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
