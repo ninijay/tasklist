@@ -1,7 +1,11 @@
 $(document).ready(function () {
+
+    
+    var listId;
+    window.main = new Main();
     window.taskid = 0;
     window.tlist = new TaskList("");
-    window.tlist.load("demo", function (lst) {
+    window.tlist.load(listId, function (lst) {
         window.tlist.title = lst.title;
         lst.tasks.forEach(task => {
             console.log(task);
@@ -19,6 +23,17 @@ $(document).ready(function () {
         window.tlist.getById(id).title = text;
     };
 
+    $("#createList").on("click",
+        function (e) {
+            e.preventDefault();
+            main.createList(
+                function (id) {
+                    listId = id;
+                    console.log(id);
+                }
+            );
+        }
+    );
     $('#list ul').keypress(function (e) {
         var id = $(e.target).parent().attr("id");
         var search = id.replace("task-", "");
