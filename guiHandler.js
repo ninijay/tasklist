@@ -17,16 +17,6 @@ $(document).ready(function(){
         $("#title").text(window.tlist.title);
     });
     
-<<<<<<< HEAD
-    function addTaskToGui(task, id)
-    {
-        console.log(window.openTask);
-       $("#list ul").append('<li type="1" value='+ id +' id="task-'+id+'"><span contenteditable="true" class="tsk-tit">'+task.title+'</span> <span class="checkit">'+window.openTask+'</span></li>');
-    };
-
-
-=======
->>>>>>> e1e26b0a5c79674d11e58167001dd0732fe71a76
     function editTask(id, text)
     {
         window.tlist.getById(id).title = text;
@@ -93,11 +83,7 @@ $(document).ready(function(){
         var taskId = (window.taskid + 1);
         var task = new Task(tit, taskId);
         window.tlist.add(task);
-<<<<<<< HEAD
-        addTaskToGui(task, taskId);
-=======
         task.render().appendTo("#list ul");
->>>>>>> e1e26b0a5c79674d11e58167001dd0732fe71a76
         window.taskid += 1;
         $('#addTaskForm').find('input[name="title"]').val("");
     });
