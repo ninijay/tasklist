@@ -59,3 +59,20 @@ TaskList.prototype.load = function (id, callback) {
     });
 }
 
+TaskList.prototype.save = function(callback){
+    $.post('https://zhaw.herokuapp.com/task_lists/' + this.id, this.toJSON(), function(data){
+        
+    }).done(function(data){
+        alert("Tasklist updated");
+    });
+}
+
+TaskList.prototype.saveNew = function(callback){
+    $.post('https://zhaw.herokuapp.com/task_lists/', this.toJSON(), function(data){
+        
+    }).done(function(data){
+        alert("Tasklist saved");
+    });
+}
+
+

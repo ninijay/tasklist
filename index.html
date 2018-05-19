@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="./jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/tasklistitem.css">
-    <script src="./jquery-3.3.1.min.js"></script>
     <script src="./Task.js"></script>
     <script src="./TaskList.js"></script>
     <script src="./guiHandler.js"></script>
@@ -21,6 +21,25 @@
 </head>
 
 <body>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="enterNewTasklistNameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Enter TaskList Name</h5>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="newTaskListName" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="closeModal" >Close</button>
+              <button type="button" class="btn btn-primary" id="acceptModal" >Create</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="jumbotron">
             <h1>Tasklist</h1>
@@ -34,9 +53,14 @@
                     <form action="" method="">
                         <div class="form-group">
                             <input type="text" class="form-control" name="title" placeholder="Tasktitle" id="taskinput" />
-
                         </div>
                         <input type="submit" class="btn btn-primary" value="Add Task" id="addTrigger" />
+                    </form>
+                    <form action="" method="">
+                        <input type="submit" class="btn btn-primary marginTop20" value="Save Tasklist" id="saveTrigger" />
+                    </form>
+                    <form action="" method="">
+                        <input type="button" class="btn btn-primary marginTop20" value="New Tasklist" id="createTrigger" />
                     </form>
                 </div>
             </div>

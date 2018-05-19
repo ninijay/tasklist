@@ -1,22 +1,33 @@
 $(document).ready(function(){
-    
+    var param = window.location.href.split('#');
+
     window.taskid=0;
     window.tlist = new TaskList("");
-    window.tlist.load("demo", function(lst){
-        window.tlist.title = lst.title;
-        lst.tasks.forEach(task => {
-            console.log(task);
-            window.tlist.add(new Task(task, window.taskid))
-            if(task.done == true)
-            {
-                window.tlist.getById(window.taskid).setDone();
-            }        
-            window.taskid += 1;
+
+    function loadTask(id){
+        window.tlist.id = id;
+        window.tlist.load(id, function(lst){
+            window.tlist.title = lst.title;
+            lst.tasks.forEach(task => {
+                console.log(task);
+                window.tlist.add(new Task(task, window.taskid))
+                if(task.done == true)
+                {
+                    window.tlist.getById(window.taskid).setDone();
+                }        
+                window.taskid += 1;
+            });
+            $('#list ul').append(tlist.render());
+            $("#title").text(window.tlist.title);
         });
-        $('#list ul').append(tlist.render());
-        $("#title").text(window.tlist.title);
-    });
-    
+    }
+
+    if(param.length == 1){
+        loadTask("demo");
+    }else{
+        loadTask(param[1]);
+    }
+
     function editTask(id, text)
     {
         window.tlist.getById(id).title = text;
@@ -42,7 +53,6 @@ $(document).ready(function(){
         console.log(isChecked);
         if(!isChecked)
         {
-            
             window.tlist.getById(repl).setDone();
             $search.data(check, true);
             $search.removeClass("alert-danger");
@@ -65,13 +75,17 @@ $(document).ready(function(){
 
     $('#list ul').on("click", "li", function(e) 
     {
-        
-        var id=$(e.target).parent().parent().parent().attr("id");
-        if(id.startsWith("task-"))
-        {
-            completeTask(id);
+        function findTask(control){
+            var id = $(control).attr("id"); 
+            if(id !== undefined && id.startsWith("task-")){
+                completeTask(id);
+            }else if($(control).parent() !== undefined){
+                findTask($(control).parent());
+            }
         }
-        
+        findTask(e.target);
+        //var id=$(e.target).parent().parent().parent().attr("id");
+   
     });
 
     $('#list ul').children(".tsk-tit").off();
@@ -87,6 +101,79 @@ $(document).ready(function(){
         window.taskid += 1;
         $('#addTaskForm').find('input[name="title"]').val("");
     });
+
+    $('#saveTrigger').click(function(e){
+        e.preventDefault();
+
+        var myobject = {
+            id: null,
+            tasks: [
+                {
+                    done: false,
+                    id: 0,
+                    title: "Buy milk"
+                },
+                {
+                    done: false,
+                    id: 1,
+                    title: "Invite friends"
+                },
+                        {
+                    done: false,
+                    id: 2,
+                    title: "Call Bill"
+                },
+                {
+                    done: false,
+                    id: 3,
+                    title: "Write Task List"
+                }
+            ],
+            title: "Demo Tasklist"
+        }
+
+        console.log(JSON.stringify(myobject));
+
+        window.tlist.save();
+    });
+
+    $('#createTrigger').click(function(e){
+        e.preventDefault();
+        $('#enterNewTasklistNameModal').css("opacity", 100);
+        $('#enterNewTasklistNameModal').css("display", "block");
+        $('#newTaskListName').prop("text", "");
+        $('#acceptModal').prop("disabled", true);
+    });
+
+    function hideModal(){
+        $('#enterNewTasklistNameModal').css("opacity", 0);
+        $('#enterNewTasklistNameModal').css("display", "none");
+    }
+
+    $('#closeModal').click(function(e){
+        e.preventDefault();
+        hideModal();
+    });
+
+    $('#acceptModal').click(function(e){
+        e.preventDefault();
+        var taskListName = $('#newTaskListName').val();
+        var newTaskList = new TaskList();
+        newTaskList.id = taskListName;
+        newTaskList.title = taskListName + " Tasklist";
+        newTaskList.saveNew();
+        window.tlist = newTaskList;
+        hideModal();
+    });
+
+    $('#newTaskListName').keyup(function(e){
+        var name = $('#newTaskListName').val();
+        if(name.length > 0){
+            $('#acceptModal').prop("disabled", false);
+        }else{
+            $('#acceptModal').prop("disabled", true);
+        }
+    })
 });
    
 

@@ -19,3 +19,11 @@ body{
     background-size: cover;
 }
 
+.marginTop20 {
+    margin-top: 20px;
+}
+
+#tasks > li:hover{
+    cursor: pointer;
+}
+
