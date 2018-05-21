@@ -51,8 +51,8 @@ TaskList.prototype.load = function (id, callback) {
     $.getJSON('https://zhaw.herokuapp.com/task_lists/' + id, function (data) {
         taskList.id = data.id;
         $.each(data.tasks, function (index, task) {
-            var t = taskList.add(task.title);
-            t.done = task.done;
+            var tsk = new Task(task.title, null, task.done);
+            var t = taskList.add(tsk);
         });
         taskList.title = data.title;
         callback(taskList);

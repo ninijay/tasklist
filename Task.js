@@ -1,6 +1,6 @@
-function Task(title, id) {
+function Task(title, id, done) {
     this.title = title || "";
-    this.done = false;
+    this.done = done || false;
     this.id = id;
 }
 
@@ -13,7 +13,7 @@ Task.prototype.setUndone = function () {
 }
 
 Task.prototype.toJSON = function() {
-    return JSON.stringify({title:this.title, done:this.done, id: this.id});
+    return {title:this.title, done:this.done};
 }
 
 Task.prototype.render = function () {

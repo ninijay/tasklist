@@ -10,7 +10,7 @@ $(document).ready(function(){
             window.tlist.title = lst.title;
             lst.tasks.forEach(task => {
                 console.log(task);
-                window.tlist.add(new Task(task, window.taskid))
+                window.tlist.add(new Task(task.title, window.taskid, task.done))
                 if(task.done == true)
                 {
                     window.tlist.getById(window.taskid).setDone();
@@ -133,7 +133,7 @@ $(document).ready(function(){
         newTaskList.title = taskListName + " Tasklist";
         newTaskList.saveNew(function(d){
             var dt = $.parseJSON(d);
-            alert(dt.id);
+            alert("TaskList ID: "+dt.id);
         });
         window.tlist = newTaskList;
         hideModal();
