@@ -12,6 +12,10 @@ Task.prototype.setUndone = function () {
     this.done = false;
 }
 
+Task.prototype.toJSON = function() {
+    return JSON.stringify({title:this.title, done:this.done, id: this.id});
+}
+
 Task.prototype.render = function () {
     var $markup;
 
