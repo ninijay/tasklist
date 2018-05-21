@@ -104,36 +104,6 @@ $(document).ready(function(){
 
     $('#saveTrigger').click(function(e){
         e.preventDefault();
-
-        var myobject = {
-            id: null,
-            tasks: [
-                {
-                    done: false,
-                    id: 0,
-                    title: "Buy milk"
-                },
-                {
-                    done: false,
-                    id: 1,
-                    title: "Invite friends"
-                },
-                        {
-                    done: false,
-                    id: 2,
-                    title: "Call Bill"
-                },
-                {
-                    done: false,
-                    id: 3,
-                    title: "Write Task List"
-                }
-            ],
-            title: "Demo Tasklist"
-        }
-
-        console.log(JSON.stringify(myobject));
-
         window.tlist.save();
     });
 
@@ -161,7 +131,10 @@ $(document).ready(function(){
         var newTaskList = new TaskList();
         newTaskList.id = taskListName;
         newTaskList.title = taskListName + " Tasklist";
-        newTaskList.saveNew();
+        newTaskList.saveNew(function(d){
+            var dt = $.parseJSON(d);
+            alert(dt.id);
+        });
         window.tlist = newTaskList;
         hideModal();
     });

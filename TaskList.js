@@ -43,7 +43,7 @@ TaskList.prototype.render = function() {
 }
 
 TaskList.prototype.toJSON = function () {
-    return JSON.stringify(this);
+    return JSON.stringify({title:this.title, tasks:this.tasks, id: this.id});
 };
 
 TaskList.prototype.load = function (id, callback) {
@@ -69,7 +69,7 @@ TaskList.prototype.save = function(callback){
 
 TaskList.prototype.saveNew = function(callback){
     $.post('https://zhaw.herokuapp.com/task_lists/', this.toJSON(), function(data){
-        
+        callback(data);
     }).done(function(data){
         alert("Tasklist saved");
     });
